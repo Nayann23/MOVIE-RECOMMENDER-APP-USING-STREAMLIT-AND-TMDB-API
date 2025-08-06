@@ -1,117 +1,122 @@
 # 🎬 MOVIE RECOMMENDER APP USING STREAMLIT AND TMDB API
 
-A **content-based movie recommendation system** built with **Python, Streamlit**, and the **TMDB API**. This app suggests movies similar to the one selected by the user, displaying their posters for an intuitive and visually appealing user experience.
+A **content-based movie recommendation system** built with **Python**, **Streamlit**, and the **TMDB API**. This app suggests similar movies based on content similarity and dynamically fetches movie posters.
 
 ---
 
 ## 🚀 Project Overview
 
-This project uses:
-- A **precomputed similarity matrix** to compare movies based on their content
-- **Streamlit** to build a fast and interactive web UI
-- **TMDB API** to fetch movie posters in real-time
+This app leverages:
+- A **precomputed similarity matrix** to find content-based matches between movies
+- **Streamlit** to provide a quick and interactive user interface
+- **TMDB API** to fetch real-time movie posters for recommendations
 
-When a user selects a movie, the app recommends **5 similar movies** and shows their **posters** fetched dynamically via the TMDB API.
+Upon selecting a movie, the app displays **5 similar movies** along with their **poster images** fetched dynamically.
 
 ---
 
 ## 🧠 How It Works
 
-1. The similarity matrix (cosine similarity) is computed based on metadata like genres, keywords, overview, etc.
-2. When a movie is selected, the top 5 most similar movies (excluding the original) are retrieved from the matrix.
-3. TMDB API is used to get the poster image for each recommended movie.
-4. Results are displayed neatly using **Streamlit columns**.
+1. Preprocessing merges metadata features such as genres, keywords, overview, cast, and crew.
+2. A **cosine similarity matrix** is computed from the combined feature set.
+3. The app uses this matrix to retrieve the 5 most similar movies (excluding the selected one).
+4. Poster images for recommendations are fetched using the **TMDB API**.
+5. All content is displayed using **Streamlit columns**, offering a clean UI.
 
 ---
 
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```
-📦 movie-recommender-app-using-streamlit-and-tmdb-api
-├── app.py                  # Main Streamlit app
-├── recommendation.ipynb   # Jupyter notebook for preprocessing and model
-├── README.md               # Project documentation
-├── requirements.txt        # Dependencies (optional)
+MOVIE-RECOMMENDER-APP-USING-STREAMLIT-AND-TMDB-API/
+├── app.py                  # Main Streamlit application
+├── recommendation.ipynb    # Notebook to preprocess data and build the similarity matrix
+├── README.md               # This documentation
+├── requirements.txt        # Dependency list (optional)
 ```
 
 ---
 
-## ⚠️ Missing Files & Why They're Not Included
+## ⚠️ Large Files Omitted
 
-To keep the repository lightweight and avoid GitHub’s file size restrictions, the following large files **are not pushed**:
+To keep the repo lightweight and within GitHub’s limits, the following files **are NOT included**:
 
 | File Name          | Size     | Description                          |
 |--------------------|----------|--------------------------------------|
-| `movies_dict.pkl`  | ~43 MB   | Dictionary containing movie metadata |
-| `similarity.pkl`   | ~174 MB  | Precomputed similarity matrix        |
+| `movies_dict.pkl`  | ~43 MB   | Contains movie metadata              |
+| `similarity.pkl`   | ~174 MB  | Precomputed cosine similarity matrix |
 
-### 🔍 Why?
-- GitHub restricts file uploads over **100 MB**
-- These files can be **regenerated** from the notebook or **hosted externally**
+**Why exclude them?**
+- GitHub imposes a **100 MB** file size limit per file.
+- These files can be regenerated via the notebook or downloaded externally.
 
 ---
 
-## 📥 How to Set Up the Project Locally
+## 📥 Setup Instructions
 
-1. **Clone the repository**
-
+1. **Clone the repository**  
 ```bash
-git clone https://github.com/your-username/movie-recommender-app-using-streamlit-and-tmdb-api.git
-cd movie-recommender-app-using-streamlit-and-tmdb-api
+git clone https://github.com/Nayann23/MOVIE-RECOMMENDER-APP-USING-STREAMLIT-AND-TMDB-API.git
+cd MOVIE-RECOMMENDER-APP-USING-STREAMLIT-AND-TMDB-API
 ```
 
-2. **Install dependencies**
-
+2. **Install dependencies**  
 ```bash
 pip install -r requirements.txt
-```
-
-> If `requirements.txt` is not available, install manually:
-
+```  
+If `requirements.txt` is unavailable:  
 ```bash
 pip install streamlit pandas requests
 ```
 
-3. **Add Missing Files**
+3. **Obtain missing files**  
+- Run `recommendation.ipynb` to generate `movies_dict.pkl` and `similarity.pkl`, **or**  
+- Download them from an external link (e.g. Google Drive, Hugging Face)
 
-- Either **run the notebook** to generate `movies_dict.pkl` and `similarity.pkl`
-- Or **download from an external link** (e.g., Google Drive, Hugging Face)
+4. **Place the `.pkl` files** in the same folder as `app.py`.
 
-4. **Run the app**
-
+5. **Run the app**  
 ```bash
 streamlit run app.py
 ```
 
 ---
 
-## 🔑 TMDB API Key
+## 🔑 TMDB API Key Configuration
 
-The app uses a free TMDB API key to fetch posters. If you plan to use your own key:
-
-1. Sign up at [TMDB](https://www.themoviedb.org/)
-2. Get your API key from your account settings
-3. Replace the API key in the `fetch_poster()` function inside `app.py`
+The app uses TMDB API to fetch movie posters. To use your own API key:
+1. Register at https://www.themoviedb.org/ and generate an API key.
+2. Replace the existing key in the `fetch_poster()` function inside `app.py`.
 
 ---
 
 ## ✅ Features
 
-- Fast recommendations based on content similarity
-- Real-time movie poster fetching
-- Clean UI built with Streamlit
-- Modular, beginner-friendly codebase
+- Content-based recommendation of top 5 similar movies
+- Real-time movie poster display via TMDB
+- Clean, responsive UI using Streamlit
+- Modular structure for ease of understanding and modification
+
+---
+
+## 🌱 Future Enhancements
+
+- Include movie overviews, ratings, and release date
+- Add filtering by genre or year
+- Incorporate collaborative filtering or hybrid recommendation models
+- Enhance UI with improved layout or animations
+- Deploy on platforms like Streamlit Cloud or Hugging Face Spaces
 
 ---
 
 ## 🙌 Acknowledgements
 
-- [TMDB API](https://www.themoviedb.org/documentation/api)
-- [Streamlit](https://streamlit.io/)
-- Open-source Python & Machine Learning community
+- **TMDB API** for metadata and poster images  
+- **Streamlit** for rapid UI prototyping  
+- **Python**, **Pandas**, **Scikit-learn**, and the open-source ML community
 
 ---
 
 ## 📜 License
 
-This project is open-source and free to use under the [MIT License](LICENSE).
+Project is open-source under the **MIT License**. See the `LICENSE` file for details.
